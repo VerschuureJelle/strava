@@ -20,7 +20,12 @@ jobs:
 
       - name: 📦 Install dependencies
         run: pip install -r requirements.txt
-
+    
+      - name: 🔍 Debug environment
+        run: echo "Client ID is: $STRAVA_CLIENT_ID"
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+      
       - name: ▶️ Run main.py
         run: python main.py
         env:
