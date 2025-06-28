@@ -2,17 +2,18 @@ name: Strava Verbranding Script
 
 on:
   schedule:
-    - cron: '0 * * * *'  # elke uur
-  workflow_dispatch:      # handmatig starten via GitHub UI
+    - cron: '0 * * * *'       # Elke uur
+  workflow_dispatch:           # Handmatig starten
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
+
     steps:
-      - name: 🔄 Checkout repo
+      - name: 🔄 Checkout repository
         uses: actions/checkout@v3
 
-      - name: 🐍 Set up Python
+      - name: 🐍 Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
