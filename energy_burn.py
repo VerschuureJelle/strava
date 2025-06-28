@@ -1,7 +1,6 @@
 # calculate_energy_burn.py
 
 import pandas as pd
-import os
 from energy_zones_config import RUN_HR_ZONES, RIDE_HR_ZONES
 
 ACTIVITY_FILE = 'strava_activities.csv'
