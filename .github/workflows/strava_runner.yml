@@ -2,7 +2,7 @@ name: Strava Verbranding Script
 
 on:
   schedule:
-    - cron: '0 * * * *'       # Elke uur
+    - cron: '0 8 * * *'       # Elke uur
   workflow_dispatch:           # Handmatig starten
 
 jobs:
