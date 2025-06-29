@@ -3,12 +3,14 @@
 import strava_export
 import energy_zones_config
 import energy_burn
+import os
 from send_notification import send_strava_summary
 import pandas as pd
 from dotenv import load_dotenv
-load_dotenv()
 
 if __name__ == '__main__':
+    load_dotenv()
+    print("DEBUG: STRAVA_CLIENT_ID =", os.environ.get("STRAVA_CLIENT_ID"))
     print("🔄 Stap 1: Ophalen van nieuwe Strava-activiteiten...")
     strava_export.main()
     
