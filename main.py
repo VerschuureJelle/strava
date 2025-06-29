@@ -5,6 +5,8 @@ import energy_zones_config
 import energy_burn
 from send_notification import send_strava_summary
 import pandas as pd
+from dotenv import load_dotenv
+load_dotenv()
 
 if __name__ == '__main__':
     print("🔄 Stap 1: Ophalen van nieuwe Strava-activiteiten...")
