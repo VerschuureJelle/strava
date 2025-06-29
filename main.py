@@ -19,16 +19,8 @@ if __name__ == '__main__':
 
     print("🔥 Stap 3: Berekening van macronutriëntenverbranding...")
     energy_burn  # Voert verrijking uit op activiteitenbestand
-    print("✅ Alles afgerond via main.py")
 
-# Laad laatste regel uit enriched bestand
-df = pd.read_csv("strava_activities_enriched.csv")
-last = df.sort_values("Date", ascending=False).iloc[0]
+    print("📲 Stap 5: Verstuur pushnotificaties voor nieuwe activiteiten...")
+    send_notification.main()
 
-msg = (
-    f"🏃‍♀️ Nieuwe {last['Type']} op {last['Date']}:\n"
-    f"🔸 {round(last['Total Calories'])} kcal\n"
-    f"🍞 KH: {round(last['Total Carbs (g)'])}g\n"
-    f"🔥 Vet: {round(last['Total Fat (g)'])}g"
-)
-send_strava_summary(msg)
+    print("✅ Alle stappen voltooid!")
