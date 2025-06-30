@@ -1,10 +1,10 @@
 # main.py
 
+import send_notification
 import strava_export
 import energy_zones_config
 import energy_burn
 import os
-import send_notificaton
 import pandas as pd
 from dotenv import load_dotenv
 
