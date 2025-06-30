@@ -1,7 +1,9 @@
 import pandas as pd
 import os
 import requests
+from dotenv import load_dotenv
 
+load_dotenv()
 CSV_FILE = "strava_activities_enriched.csv"
 NOTIFIED_FILE = "notified_ids.txt"
 
@@ -33,7 +35,7 @@ def send_notification(activity):
         "priority": 0
     })
     if response.status_code == 200:
-        print(f"✅ Melding verstuurd voor activiteit {activity['ID']}")
+        print(f"✅ Melding verstuurd voor activiteit {activity['Activity ID']}")
     else:
         print(f"❌ Fout bij versturen: {response.text}")
 
@@ -41,13 +43,13 @@ def main():
     df = pd.read_csv(CSV_FILE)
     notified_ids = load_notified_ids()
 
-    new_activities = df[~df['ID'].astype(str).isin(notified_ids)]
+    new_activities = df[~df['Activity ID'].astype(str).isin(notified_ids)]
 
     for _, activity in new_activities.iterrows():
         if pd.isna(activity["Total Calories"]):
             continue
         send_notification(activity)
-        save_notified_id(str(activity["ID"]))
+        save_notified_id(str(activity["Activity ID"]))
 
 if __name__ == "__main__":
     main()

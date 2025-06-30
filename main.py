@@ -4,7 +4,7 @@ import strava_export
 import energy_zones_config
 import energy_burn
 import os
-from send_notification import send_strava_summary
+import send_notificaton
 import pandas as pd
 from dotenv import load_dotenv
 
