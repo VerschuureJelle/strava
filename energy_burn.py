@@ -32,12 +32,10 @@ for idx, row in new_rows.iterrows():
     if sport == 'Ride':
         zones = RIDE_HR_ZONES
         ref = ride_ref
-    elif sport == 'Run':
+    else:
         zones = RUN_HR_ZONES
         ref = run_ref
-    else:
-        print(f"⚠️ Onbekend activiteitstype: {sport} — overslaan")
-        continue
+
 
     for zone_num in range(1, len(zones)):
         zone_col = f'Custom Zone {zone_num} Time (sec)'

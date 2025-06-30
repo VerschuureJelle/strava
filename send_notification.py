@@ -6,7 +6,7 @@ CSV_FILE = "strava_activities_enriched.csv"
 NOTIFIED_FILE = "notified_ids.txt"
 
 PUSHOVER_USER_KEY = os.environ["PUSHOVER_USER_KEY"]
-PUSHOVER_APP_TOKEN = os.environ["PUSHOVER_APP_TOKEN"]
+PUSHOVER_APP_TOKEN = os.environ["PUSHOVER_API_TOKEN"]
 
 def load_notified_ids():
     if not os.path.exists(NOTIFIED_FILE):
