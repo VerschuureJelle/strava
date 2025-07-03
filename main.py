@@ -20,7 +20,7 @@ if __name__ == '__main__':
     print("🔥 Stap 3: Berekening van macronutriëntenverbranding...")
     energy_burn  # Voert verrijking uit op activiteitenbestand
 
-    print("📲 Stap 5: Verstuur pushnotificaties voor nieuwe activiteiten...")
+    print("📲 Stap 4: Verstuur pushnotificaties voor nieuwe activiteiten...")
     send_notification.main()
 
     print("✅ Alle stappen voltooid!")
