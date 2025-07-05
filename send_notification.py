@@ -10,7 +10,7 @@ load_dotenv(dotenv_path="/Users/jelleverschuure/StravaEat/.env")
 print(open("/Users/jelleverschuure/StravaEat/.env").read())
 
 print("DEBUG: PUSHOVER_USER_KEY =", os.environ.get("PUSHOVER_USER_KEY"))
-print("DEBUG: PUSHOVER_APP_TOKEN =", os.environ.get("PUSHOVER_API_TOKEN"))
+print("DEBUG: PUSHOVER_APP_TOKEN =", os.environ.get("PUSHOVER_APP_TOKEN"))
 
 
 CSV_FILE = "strava_activities_enriched.csv"
