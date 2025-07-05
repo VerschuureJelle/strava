@@ -1,13 +1,12 @@
 # main.py
 from dotenv import load_dotenv
 import os
-load_dotenv()
-
-
 import strava_export
 import energy_zones_config
 import energy_burn
 import send_notification
+
+load_dotenv(dotenv_path="/Users/jelleverschuure/StravaEat/.env")
 
 if __name__ == '__main__':
     print("DEBUG: STRAVA_CLIENT_ID =", os.environ.get("STRAVA_CLIENT_ID"))

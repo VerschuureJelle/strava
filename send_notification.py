@@ -3,6 +3,8 @@
 import os
 import pandas as pd
 import requests
+from dotenv import load_dotenv
+load_dotenv()
 
 CSV_FILE = "strava_activities_enriched.csv"
 NOTIFIED_FILE = "notified_ids.txt"
