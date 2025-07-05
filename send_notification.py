@@ -11,7 +11,6 @@ load_dotenv(dotenv_path="/Users/jelleverschuure/StravaEat/.env")
 print("DEBUG: PUSHOVER_USER_KEY =", os.environ.get("PUSHOVER_USER_KEY"))
 print("DEBUG: PUSHOVER_APP_TOKEN =", os.environ.get("PUSHOVER_APP_TOKEN"))
 
-
 CSV_FILE = "strava_activities_enriched.csv"
 NOTIFIED_FILE = "notified_ids.txt"
 
@@ -41,12 +40,21 @@ def send_notification(activity):
         raise RuntimeError("❌ Pushover keys ontbreken in de omgeving.")
 
     emoji = get_activity_emoji(activity['Type'])
-    title = f"{emoji} Nieuwe {activity['Type']}: {int(activity['Total Calories'])} kcal"
+    date_str = activity.get("FormattedDate", "Onbekende datum")
+    afstand = activity.get("FormattedDistance", f"{activity['Distance (km)']:.1f} km")
+    kcal = round(activity['Total Calories']) if pd.notna(activity['Total Calories']) else 'onbekend'
+    vet = round(activity['Total Fat (g)']) if pd.notna(activity['Total Fat (g)']) else 'onbekend'
+    kh = round(activity['Total Carbs (g)']) if pd.notna(activity['Total Carbs (g)']) else 'onbekend'
+
+    title = f"{emoji} Nieuwe {activity['Type']} voltooid!"
     msg = (
-        f"Afstand: {activity['Distance (km)']} km\n"
-        f"Vet: {round(activity['Total Fat (g)'])}g\n"
-        f"Koolhydraten: {round(activity['Total Carbs (g)'])}g"
+        f"📅 Datum: {date_str}\n"
+        f"📏 Afstand: {afstand}\n"
+        f"🔥 Verbranding: {kcal} kcal\n"
+        f"🍞 Koolhydraten: {kh}g\n"
+        f"🥑 Vet: {vet}g"
     )
+
     response = requests.post("https://api.pushover.net/1/messages.json", data={
         "token": PUSHOVER_APP_TOKEN,
         "user": PUSHOVER_USER_KEY,
