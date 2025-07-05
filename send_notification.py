@@ -40,7 +40,7 @@ def send_notification(activity):
         raise RuntimeError("❌ Pushover keys ontbreken in de omgeving.")
 
     emoji = get_activity_emoji(activity['Type'])
-    date_str = activity.get("FormattedDate", "Onbekende datum")
+    date_str = activity.get("FormattedDate") or pd.to_datetime(activity.get("Date")).strftime("%d-%m-%Y om %H:%M")
     afstand = activity.get("FormattedDistance", f"{activity['Distance (km)']:.1f} km")
     kcal = round(activity['Total Calories']) if pd.notna(activity['Total Calories']) else 'onbekend'
     vet = round(activity['Total Fat (g)']) if pd.notna(activity['Total Fat (g)']) else 'onbekend'
