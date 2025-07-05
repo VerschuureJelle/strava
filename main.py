@@ -8,7 +8,6 @@ import send_notification
 
 load_dotenv()
 if __name__ == '__main__':
-    print("DEBUG: STRAVA_CLIENT_ID =", os.environ.get("STRAVA_CLIENT_ID"))
     print("🔄 Stap 1: Ophalen van nieuwe Strava-activiteiten...")
     strava_export.main()
     
